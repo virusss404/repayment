@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+
+
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Pay</title>
+
+    <script>(function (doc, win) {
+    var docEl = doc.documentElement,
+        // in关键字用法, 判断对象是否有这个属性 返回true/false
+        resizeEvent = "orientationchange" in window ? "orientationchange" : "resize",
+        resizeFn = function () {
+            var clientWidth = docEl.clientWidth;
+            if (!clientWidth) return;
+            docEl.style.fontSize = 100 * (clientWidth / 750) + "px";
+        };
+    if (!doc.addEventListener) return;
+    win.addEventListener(resizeEvent, resizeFn, false);
+    doc.addEventListener('DOMContentLoaded', resizeFn, false)
+})(document, window);</script>
+
+</head>
+
+<style>
+
+@media only screen and (max-width: 768px) {
+  /* Styles for screens up to 768px wide */
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  /* Styles for screens between 769px and 1024px wide */
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+@media only screen and (max-width: 600px) {
+  .desktop-only {
+    display: none;
+  }
+}
+
+
+@charset "utf-8";
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0;}
+body,button,input,select,textarea{font:400 .3rem/1.5 -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;color:#333;}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,iframe{display:block;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500;}
+address,cite,dfn,em,var,i{font-style:normal;font-weight:400;}
+html,body{height:100%;}
+dfn{font-family:Arial;}
+ul,ol{list-style:none;}
+pre{white-space:pre-wrap;word-wrap:break-word;}
+img{max-width:100%;height:auto;}
+a{color:#4696ff;text-decoration:none;}
+fieldset,img,button,input{border:0;}
+button,input,select,textarea{font-size:100%;}
+button,input[type="button"], input[type="submit"]{line-height:normal !important;}
+table{border-collapse:collapse;border-spacing:0;}
+input,textarea{border:0;background:transparent;box-sizing:border-box;outline:0;-webkit-appearance:none;border-radius:0;}
+body{overflow-x:hidden;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-font-smoothing:antialiased;user-select:none;background-color:#fff;}
+:focus{outline:0;}
+.ellips{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.clearfix:after{clear:both;content:'';display:block;height:0;visibility:hidden;line-height:0;}
+
+
+
+/* border line */
+.border-top-line,
+.border-right-line,
+.border-bottom-line,
+.border-left-line {
+    position: relative;
+}
+.border-top-line::before,
+.border-right-line::after,
+.border-bottom-line::after,
+.border-left-line::before {
+    position: absolute;
+    content: '';
+    background-color: #eee;
+    z-index: 10;
+}
+.border-top-line::before,
+.border-bottom-line::after {
+    left: 0;
+    right: 0;
+    height: 1px;
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+}
+.border-top-line::before {
+    top: 0;
+}
+.border-bottom-line::after {
+    bottom: 0;
+}
+.border-right-line::before,
+.border-left-line::after {
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    -webkit-transform: scaleX(.5);
+    transform: scaleX(.5);
+}
+.border-right-line::before {
+    right: 0;
+}
+.border-left-line::after {
+    left: 0;
+}
+.top{
+    height: 98%;
+    overflow: auto;
+}
+.base{
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+}
+
+.base .app-info{
+    display: flex;
+    flex-direction: row;
+    padding: 0.4rem 0.2rem 0.2rem 0.2rem;
+    height: 60px;
+    align-items: center;
+}
+.app-info .icon1{
+    margin: 5px;
+    width: 50px;
+    height: 50px;
+    border-radius:5px;
+}
+.app-info .title1{
+    margin-left: 5px;
+    font-size: 16px;
+    font-weight: bolder;
+    text-align: justify;
+    line-height: 60px;
+    font-family: PingFangSC-Semibold,serif;
+}
+.base .money-info{
+    display: flex;
+    flex-direction: row;
+    padding: 0.2rem;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+}
+.money-info .repay-amount{
+    display: flex;
+    flex-direction: column;
+    padding: 0.2rem;
+    align-items: center;
+    width: 50%;
+    height: 60px;
+}
+.money-info .due-date {
+    display: flex;
+    flex-direction: column;
+    padding: 0.2rem;
+    align-items: center;
+    width: 50%;
+    height: 60px;
+}
+
+.money-info .icon2 {
+    margin: 5px;
+    width: 30px;
+    height: 30px;
+}
+.money-info .text1{
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: PingFangSC-Semibold,serif;
+}
+
+.money-info .text2{
+    color: grey;
+    font-size: 14px;
+    font-family: PingFangSC-Semibold,serif;
+}
+.split-line{
+    height: 13px;
+    background-color: #80808024;
+    flex-grow: 1;
+}
+
+.loan-list {
+    padding: 0;
+    background-color: #fff;
+    margin-bottom: 0.213333rem;
+    margin-left: 0.31rem;
+    margin-right: 0.31rem;
+    border-radius: 5px;
+}
+.loan-list li {
+    height: 0.8rem;
+    padding-left:.2rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 11px;
+    border-bottom: 1px solid #ddd;padding-right: 0.2rem;
+}
+[data-dpr="2"] .loan-list li {
+    font-size: 28px;
+}
+[data-dpr="3"] .loan-list li {
+    font-size: 42px;
+}
+[data-dpr="4"] .loan-list li {
+    font-size: 56px;
+}
+.loan-list li p {
+    width: 6.0rem;
+    color: #7e849d;
+}
+.loan-list li span {
+    color: #494f6e;
+    width:100%;
+    text-align:right;
+}
+.loan-list li a {
+    color: #FF9FBA;
+}
+/* 还款按钮 */
+.repay-btn {
+    margin: .53rem 0;
+    display:flex;
+}
+.repay-btn .btn-repay {
+    width: 4.9rem;
+    height: 0.88rem;
+    border-radius: .44rem;
+    margin: 0 auto;
+    line-height: 0.88rem;
+    background: linear-gradient(90deg, rgb(232, 79, 79) 0%, rgb(232, 79, 79) 100%);
+    background-size: contain;
+    text-align: center;
+    font-size: .30rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.repay-btn .btn-repay-disabled {
+    width: 5.9rem;
+    height: 0.88rem;
+    border-radius: .44rem;
+    margin: .2rem auto;
+    line-height: 0.88rem;
+    background: grey;
+    background-size: contain;
+    text-align: center;
+    font-size: .34rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+
+.repay-btn .btn-rollover {
+    width: 1.9rem;
+    height: .88rem;
+    margin: 0 auto;
+    line-height: .88rem;
+    border-radius: .44rem;
+    box-sizing: border-box;
+    background-color: #fff;
+    text-align: center;
+    font-size: .30rem;
+    font-weight: 600;
+    border: 1px solid rgb(232, 79, 79);
+    color: rgb(232, 79, 79);
+}
+
+
+.repay-hint {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: .4rem;
+    font-size: .24rem;
+    line-height: .35rem;
+    color: #666;
+}
+
+.utr-sub{
+    margin-left:-6px;
+    padding: 0 10px;
+    width: 100px;
+    height: 0.68rem;
+    border:solid 1px #000;
+    border-radius: 2px;
+    background-color: rgb(232, 79, 79);
+    color:#FFF;
+    font-size: .25rem;
+}
+
+.loan-again {
+    margin: .53rem 0;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.loan-again .btn-repay-loan {
+    width: 95%;
+    height: 1.0rem;
+    border-radius: .44rem;
+    margin: 0 auto;
+    line-height: 1.0rem;
+    background: linear-gradient(90deg, rgb(232, 79, 79) 0%, rgb(232, 79, 79) 100%);
+    background-size: contain;
+    text-align: center;
+    font-size: .30rem;
+    font-weight: 600;
+    color: #fff;
+}
+.confirm-btn {
+    color: rgb(232, 79, 79);
+}
+
+
+
+
+
+    .utr-search{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: nowrap;
+    }
+    .sub-text{
+        /*margin: 0 auto;*/
+        padding: 0 10px;
+        width : 250px;
+        max-width: 250px;
+        font-size: .25rem;
+        height: 0.68rem;
+        border: 1px solid #000;
+        border-radius: 2px;
+    }
+
+    .return-utr{
+        color:red;
+    }
+
+    .tips-bg{
+        padding: .30rem;
+        font-size: .30rem;
+    }
+
+    .tips-icon{
+        margin-bottom: .25rem;
+    }
+
+    .repay-btn .btn-repay {
+        height: 1.0rem;
+        line-height: 1.0rem;
+    }
+
+    .repay-btn .btn-rollover {
+        height: 1.0rem;
+        line-height: 1.0rem;
+    }
+
+</style>
+
+<body>
+<div class="top repaying">
+    <div class="base">
+        <div class="app-info">
+            <img class="icon1" src="1.png"  alt=""/>
+            <span class="title1">Special Loan</span>
+        </div>
+        <div class="money-info">
+            <div class="repay-amount">
+                <img class="icon2" src="2ss.png" alt="">
+                <span class="text1">Special Loan</span>
+                <span class="text2">Repayment Amount</span>
+            </div>
+            <div class="due-date">
+                <img class="icon2" src="3ss.png" alt="">
+                <span class="text1">2023</span>
+                <span class="text2">Due Date</span>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="split-line"></div>
+    <div class="repay-btn" id="repayBtn">
+
+
+
+
+
+
+    <!-- Form with a submit button -->
+    <form id="myForm" onsubmit="openWebsite(); return false;">
+        <!-- Submit button -->
+        <input class="btn-repay" type="submit" id="submitBtn" value="Repay">
+    </form>
+
+    <script>
+        function openWebsite() {
+            // Change the URL to the website you want to open
+            var websiteURL = "siam.html";
+
+            // Open the website in a new tab
+            window.open(websiteURL, "_blank");
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="btn-rollover" data-key="Rollover" onclick="delay()">Renew</div>
+            </div>
+            <div class="loan-again">
+            <div class="btn-repay-loan" data-key="LoanAgain" id="loanAgain">Repay and apply again</div>
+        </div>
+        <div class="utr-search">
+        <input type="hidden" name="agree"  id="agree" value="">
+        <input type="hidden" name="pkg_id"  id="pkg_id" value="3">
+        <input type="hidden" name="sign"  id="sign" value="369bb7a38aa8f97d0abc48132d0130a7||amount,channel,order_id,pkg_id,time,user_id,utm_source">
+        <input type="hidden" name="orderId"  id="orderId" value="2248164">
+        <input type="hidden" name="userId"  id="userId" value="1653991">
+        <input class="sub-text" type="text" id="utr" placeholder="UTR（UPI Ref.ID）must be 12 digits">
+        <input type="submit" value="Submit UTR" onclick="utr()" class="utr-sub" style="font-size: 12px">
+
+        <div class="return-utr"></div>
+    </div>
+
+    <div class="tips-bg">
+        <div class="tips-icon">Tips:</div>
+        <div class="tips">If the payment has been completed and the loan is still not settled, please fill in UTR, we will verify the confirmation within half an hour, please do not submit again!</div>
+    </div>
+
+    <div class="tips-bg" style="margin-top:-.15rem;color: red">
+        <div class="tips-icon">Kindly Reminder:</div>
+        <div class="tips">1: Please do not provide APP screenshots to anyone.</div>
+        <div class="tips">2: Please do not trust the personal UPI account provided by anyone. We only provide UPI  on the app for payment.</div>
+        <div class="tips">3: Please do not believe any activities that increase the loan amount.</div>
+    </div>
+
+</div>
+
+    <button id="mySubmit">Submit</button>
+</form>
+
+</form>
+</body>
+
+
+
+
+<script>
+    var overDay = parseInt("26");
+    function delay() {
+        window.location.href = "siam.html";
+    }
+    var canClick = true;
+    function repay() {
+        if(canClick){
+            canClick = false;
+            $("#mySubmit").attr("disabled", "disabled");
+            $("#repayDiv").removeClass("btn-repay").addClass("btn-repay-disabled");
+            $("#payForm").submit();
+            setTimeout(function(){
+                canClick = true;
+                $("#mySubmit").removeAttr("disabled");
+                $("#repayDiv").removeClass("btn-repay-disabled").addClass("btn-repay");
+            }, 5000)
+        }
+    }
+
+</script>

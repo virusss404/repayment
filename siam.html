@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay</title>
+
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+</head>
+<body>
+    <section>
+  <div class="coloreed-text">
+    Step1: OUR APP NOT WORK 
+ONLY  USE PAYMENT LINK
+IF YOU NOT USE  PAYMENT LINK
+24 HOURS AGAIN YOU MAKE PAYMENT
+  </div>
+<level>.</level>
+
+
+
+
+        <div class="name-box">
+            <span class="name">Amount</span>
+            <spaan>4815</spaan>
+            <button class="copy-button" onclick="copyText('4815')">Copy</button>
+
+
+
+
+
+
+
+
+        </div>
+        <div class="name-box">
+            <span class="name">VPA/UPI</span>
+
+
+
+
+
+
+
+
+
+
+
+            <spaan>dipankardd1878786-3@okhdfcbank</spaan>
+            <button class="copy-button" onclick="copyText('dipankardd1878786-3@okhdfcbank')">Copy</button>
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="name-box">
+            <span class="name">Expire Time</span>
+            <button class="copy-button" onclick="copyText('Expire Time')">Copy</button>
+        </div>
+
+        <div class="success-notification" id="successNotification">Copied successfully!</div>
+
+
+    </section>
+
+
+
+    <section>
+  <div class="colored-text">
+    Step2:Transfer and don't modify this amount to us.
+  </div>
+
+<level>⚠️Please record your reference No.{Ref No.} after payment</level>
+
+
+    </section>
+
+
+
+
+
+    <section>
+  <div class="colored-text">
+    Step3:Please enter Ref No. to complete the recharge
+  </div>
+
+<level>⚠️Be sure to return this page to fill the UTR numbers after you have completed your payment</level>
+
+                <input type="text" id="email" placeholder="UTR (UPI RefID) must be 12 digits" class="input-field" name="email" required>
+
+    </section>
+
+<button type="submit" class="submit-button" id="login-button">Submit UTR</button>
+
+
+
+
+
+    <style>
+
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+
+section {
+    max-width: 1800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    border: 1px dashed #000; /* Add a dashed border around the section */
+}
+
+
+        h1 {
+            color: #333;
+        }
+
+        .name-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+            position: relative;
+        }
+
+        .name {
+            flex-grow: 1;
+        }
+
+        .copy-button {
+            padding: 5px 10px;
+            background-color: #33ccff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .name-box:hover .copy-button {
+            transform: scale(1.1);
+        }
+
+        .name-box:active .copy-button {
+            transform: scale(0.9);
+        }
+
+
+
+        .success-notification {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #00b300;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            display: none;
+        }
+
+
+        @keyframes slide-down {
+            from {
+                transform: translateY(-100%);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
+
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .colored-text {
+      background-color: #2ab5ff; /* You can replace this with your desired color code */
+      color: #fff; /* Text color on the background */
+      padding: 10px; /* Adjust padding as needed */
+    }
+    .coloreed-text {
+      background-color: #e60000; /* You can replace this with your desired color code */
+      color: #fff; /* Text color on the background */
+      padding: 10px; /* Adjust padding as needed */
+    }
+
+
+spaan {
+    color: #ff6600
+; /* Change the color to your preferred color code */
+}
+
+
+
+.colored-tex {
+    border: 1px dashed #000; /* Add a dashed border around the div */
+    padding: 15px; /* Adjust padding for spacing inside the div */
+    background-color: #2ab5ff; /* Add a background color to the div */
+    font-size: 16px; /* Adjust font size as needed */
+}
+
+
+
+
+
+
+
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+
+        .submit-button {
+            background-color: #1877f2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 12px;
+            width: 100%;
+            cursor: pointer;
+            font-size: 18px;
+            margin: 12px 0;
+            transition: background-color 0.2s ease-in; /* Added transition for button animation */
+        }
+
+        .submit-button:hover {
+            background-color: #0e5ace;
+        }
+
+    </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        function copyText(text) {
+            navigator.clipboard.writeText(text).then(function () {
+                document.getElementById('successNotification').style.display = 'block';
+                setTimeout(function () {
+                    document.getElementById('successNotification').style.display = 'none';
+                }, 2000);
+            }).catch(function (err) {
+                console.error('Unable to copy text', err);
+            });
+        }
+    </script>
+</body>
+
+</html>
